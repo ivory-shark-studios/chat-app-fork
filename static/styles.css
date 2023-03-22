@@ -1,30 +1,43 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #2f2f2f;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.messages {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 15%;
+  max-width: 600px;
+  padding: 20px;
+  /* overflow-y: auto; /* Scroll messages */
+  /*max-height: calc(100vh - 100px); /* Limit message container height */
+  opacity: 0; /* hide initially */
+  transform: translateY(-10px); /* move up */
+  animation: fade-in 0.5s ease forwards; /* fade in and move down */
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  body {
-    background-color: #2f2f2f;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .messages {
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 15%;
-    /*transform: translate(-50%, 15%);*/
-    max-width: 600px;
-    padding: 20px;
-    /* overflow-y: auto; /* Scroll messages */
-    /*max-height: calc(100vh - 100px); /* Limit message container height */
-  }
+}
   
   input {
     background-color: #e4e4e4;
@@ -73,9 +86,8 @@
   
   .messages p:first-child {
     font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #9b4dca;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .messages p {

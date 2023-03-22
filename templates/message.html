@@ -19,6 +19,7 @@
 
     <script>
         const socket = io();
+        const messages = []
 
         let messageContainer = document.querySelector(".messages");
 
@@ -37,8 +38,16 @@
         })
 
         socket.on('message', (message) => {
-            let messageElement = document.createElement("p")
-            messageElement.innerText = message
+            messageContainer.removeChild(messageContainer.lastElementChild);            
+            messages.push(message)
+
+            let messageElement = document.createElement("div")
+            for (var i = messages.length - 1; i >= 0; i--) {
+                messageElementNew = document.createElement("p")
+                messageElementNew.innerText = messages[i]
+                messageElement.appendChild(messageElementNew)
+            }
+
             messageContainer.appendChild(messageElement)
         })
     </script>
