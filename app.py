@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, redirect, url_for
 from flask_socketio import SocketIO, join_room, emit
 
 app = Flask(__name__, static_folder='static')
@@ -17,5 +17,9 @@ def send_message(message):
 def message(room_name):
     return render_template('message.html', room_name=room_name)
 
+@app.route('/')
+def default():
+    return redirect(url_for('message', room_name='default'))
+    #return render_template("message.html")
 if __name__ == '__main__':
     app.run(debug=True)

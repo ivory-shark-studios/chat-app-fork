@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\phida\OneDrive\Escritorio\chat-app\venv"
+VIRTUAL_ENV="C:\Users\DiegoRodriguez-IPSi\Documents\GitHub\chat-app-fork\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
