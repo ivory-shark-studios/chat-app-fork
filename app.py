@@ -17,9 +17,13 @@ def send_message(message):
 def message(room_name):
     return render_template('message.html', room_name=room_name)
 
+@app.route('/join_room')
+def join():
+    return render_template('join_room.html')
+
 @app.route('/')
 def default():
-    return redirect(url_for('message', room_name='default'))
+    return redirect(url_for('join'))
     #return render_template("message.html")
 if __name__ == '__main__':
     app.run(debug=True)
