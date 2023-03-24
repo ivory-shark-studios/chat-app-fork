@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #8A4FFF;
+  --secondary-color: #D57EEB;
+  --background-color: #FFFFFF;
+  --box-shadow-color: rgba(138, 79, 255, 0.3);
+  --accent-color: #B388FF;
+  --placeholder-color: white;
+  --text-color: #FFFFFF;
+  --light-background-color: #F3EFFF;
+  --dark-text-color: #555555;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,7 +17,7 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #D57EEB, #8A4FFF);
+  background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
   font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
@@ -14,9 +26,9 @@ body {
 }
 
 .messages, .join_room {
-  background-color: #FFFFFF;
+  background-color: var(--background-color);
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(138, 79, 255, 0.3);
+  box-shadow: 0 8px 16px var(--box-shadow-color);
   position: absolute;
   top: 15%;
   max-width: 600px;
@@ -25,29 +37,29 @@ body {
   transform: translateY(-20px);
   animation: fade-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   font-family: 'Montserrat', sans-serif;
-  color: #FFFFFF;
+  color: var(--text-color);
 }
 
 @keyframes fade-in {
-  0% {
+  from {
     opacity: 0;
     transform: translateY(-20px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 input {
-  background: linear-gradient(to bottom, #B388FF, #7C4DFF);
+  background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
   background-size: 100% 200%;
   transition: background-position 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  background-color: #B388FF;
+  background-color: var(--accent-color);
   border: none;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(138, 79, 255, 0.3);
-  color: #FFFFFF;
+  box-shadow: 0 8px 16px var(--box-shadow-color);
+  color: var(--text-color);
   font-size: 16px;
   padding: 12px;
   width: 100%;
@@ -57,42 +69,22 @@ input {
 input:focus {
   outline: none;
   background-position: 0 -100%;
-  box-shadow: 0 0 0 2px #FFFFFF;
+  box-shadow: 0 0 0 2px var(--text-color);
 }
 
 input::placeholder {
-  color: white;
+  color: var(--placeholder-color);
 }
 
 .messages p:first-child {
   font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .messages p {
-  background-color: #F3EFFF;
+  background-color: var(--light-background-color);
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 10px;
-  color: #555555;
-}
-
-/* 
-.messages {
-  animation: bounce 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-*/
-
-@keyframes bounce {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  80% {
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 1;
-  }
+  color: var(--dark-text-color);
 }
