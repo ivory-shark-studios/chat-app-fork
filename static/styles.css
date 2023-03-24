@@ -5,94 +5,94 @@
 }
 
 body {
-  background-color: #2f2f2f;
-  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #D57EEB, #8A4FFF);
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.messages {
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.messages, .join_room {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(138, 79, 255, 0.3);
   position: absolute;
   top: 15%;
   max-width: 600px;
   padding: 20px;
-  /* overflow-y: auto; /* Scroll messages */
-  /*max-height: calc(100vh - 100px); /* Limit message container height */
-  opacity: 0; /* hide initially */
-  transform: translateY(-10px); /* move up */
-  animation: fade-in 0.5s ease forwards; /* fade in and move down */
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fade-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  font-family: 'Montserrat', sans-serif;
+  color: #FFFFFF;
 }
 
 @keyframes fade-in {
   0% {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
-  
-  input {
-    background-color: #e4e4e4;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #333333;
-    font-size: 16px;
-    padding: 10px;
-    width: 100%;
+
+input {
+  background: linear-gradient(to bottom, #B388FF, #7C4DFF);
+  background-size: 100% 200%;
+  transition: background-position 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background-color: #B388FF;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(138, 79, 255, 0.3);
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 12px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input:focus {
+  outline: none;
+  background-position: 0 -100%;
+  box-shadow: 0 0 0 2px #FFFFFF;
+}
+
+input::placeholder {
+  color: white;
+}
+
+.messages p:first-child {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.messages p {
+  background-color: #F3EFFF;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #555555;
+}
+
+/* 
+.messages {
+  animation: bounce 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+*/
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
   }
-  
-  p {
-    margin-bottom: 10px;
-    color: #333333;
+  80% {
+    transform: translateY(0);
   }
-  
-  /* Add some visual flair to the chat app */
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  100% {
+    opacity: 1;
   }
-  
-  .messages {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #333333;
-  }
-  
-  input {
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #333333;
-  }
-  
-  input:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #9b4dca;
-  }
-  
-  .messages p:first-child {
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .messages p {
-    background-color: #d3d3d3;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
+}
