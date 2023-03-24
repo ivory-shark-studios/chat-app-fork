@@ -16,13 +16,26 @@
   padding: 0;
 }
 
-body {
-  background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+body {  
+  background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color), var(--primary-color));
+  background-size: 800% 800%;
+  animation: gradient 10s ease infinite;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .messages, .join_room {
