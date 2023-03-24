@@ -1,53 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
+{% block title %}{{ room_name }} | {{ super() }}{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
-        integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
-        crossorigin="anonymous">
-    </script>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Document</title>
-</head>
-
-<body>
+{% block content %}
     <div class="messages">
         <input placeholder="Message" id="messageInput" />
     </div>
 
     <script>
+        // Create socket
         const socket = io();
-        const messages = []
+
+        // Connect to room
         socket.on("connect", () => {
             socket.emit("join", "{{ room_name }}");
         })
 
-        let messageContainer = document.querySelector(".messages");
+        // Send message
         let messageInput = document.getElementById("messageInput")
         messageInput.addEventListener("keypress", (e) => {
             if (e.which === 13) {
-                socket.emit("message", messageInput.value)
-                messageInput.value = ""
+                socket.emit("message", messageInput.value);
+                messageInput.value = "";
             }
-        })
+        });
 
-        socket.on('message', (message) => {
-            if(messages.length >= 1)
-                messageContainer.removeChild(messageContainer.lastElementChild);
-            messages.push(message);
-
-            let messageElement = document.createElement("div");
-            for (var i = messages.length - 1; i >= 0; i--) 
-            { 
-                messageElementNew = document.createElement("p");
-                messageElementNew.innerText = messages[i];
-                messageElement.appendChild(messageElementNew);
-            }
+        // Recieve message
+        let messageContainer = document.querySelector(".messages");
+        socket.on("message", (message) => {
+            let messageElement = document.createElement("p");
+            messageElement.innerText = message;
             messageContainer.appendChild(messageElement);
+            messageContainer.lastChild.before(messageElement);
+            console.log(messageContainer.firstChild);
         })
     </script>
-</body>
-</html>
+{% endblock %}
