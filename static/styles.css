@@ -87,4 +87,5 @@ input::placeholder {
   border-radius: 8px;
   margin-bottom: 10px;
   color: var(--dark-text-color);
+  word-wrap: break-word;
 }
